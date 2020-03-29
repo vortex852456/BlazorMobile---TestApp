@@ -1,4 +1,4 @@
-using System.Net;
+﻿using System.Net;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
@@ -14,8 +14,7 @@ namespace TestApp.Blazor.Server
 
         public static IWebHostBuilder CreateHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseKestrel(options => {
-                    options.Listen(IPAddress.Loopback, 5080); //HTTP port
-                }).UseStartup<Startup>();
+                .UseIISIntegration()
+                .UseStartup<Startup>();
     }
 }
